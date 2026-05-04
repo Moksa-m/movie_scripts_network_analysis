@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf version="1.2" xmlns="http://www.gexf.net/1.2draft" xmlns:viz="http:///www.gexf.net/1.1draft/viz">
+  <meta/>
+  <graph defaultedgetype="undirected">
+    <attributes class="node">
+      <attribute id="modularityClass" title="modularityClass" type="integer"/>
+      <attribute id="betweennessCentrality" title="betweennessCentrality" type="double"/>
+      <attribute id="rawSize" title="rawSize" type="double"/>
+    </attributes>
+    <attributes class="edge">
+      <attribute id="rawWeight" title="rawWeight" type="integer"/>
+    </attributes>
+    <nodes>
+      <node id="JACK" label="JACK">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0.24555048446177483"/>
+          <attvalue for="rawSize" value="40"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="40"/>
+        <viz:position x="0.38013628125190735" y="-0.4222942292690277"/>
+      </node>
+      <node id="WILL" label="WILL">
+        <attvalues>
+          <attvalue for="modularityClass" value="1"/>
+          <attvalue for="betweennessCentrality" value="0.03785743826066406"/>
+          <attvalue for="rawSize" value="29.5"/>
+        </attvalues>
+        <viz:color r="198" g="91" b="147"/>
+        <viz:size value="29.5"/>
+        <viz:position x="-167.92648315429688" y="-229.67857360839844"/>
+      </node>
+      <node id="ELIZABETH" label="ELIZABETH">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0.19948008980267048"/>
+          <attvalue for="rawSize" value="37"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="37"/>
+        <viz:position x="-36.121829986572266" y="307.23907470703125"/>
+      </node>
+      <node id="BARBOSSA" label="BARBOSSA">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0.016893388869195322"/>
+          <attvalue for="rawSize" value="23.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="23.5"/>
+        <viz:position x="-423.46417236328125" y="382.9078369140625"/>
+      </node>
+      <node id="PINTEL" label="PINTEL">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0.03214876521328134"/>
+          <attvalue for="rawSize" value="25"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="25"/>
+        <viz:position x="-336.6531982421875" y="522.581787109375"/>
+      </node>
+      <node id="GIBBS" label="GIBBS">
+        <attvalues>
+          <attvalue for="modularityClass" value="1"/>
+          <attvalue for="betweennessCentrality" value="0.008064516129032258"/>
+          <attvalue for="rawSize" value="23.5"/>
+        </attvalues>
+        <viz:color r="198" g="91" b="147"/>
+        <viz:size value="23.5"/>
+        <viz:position x="-380.0429382324219" y="-38.87501525878906"/>
+      </node>
+      <node id="NORRINGTON" label="NORRINGTON">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0.03152897170034266"/>
+          <attvalue for="rawSize" value="25"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="25"/>
+        <viz:position x="396.5494079589844" y="-105.95460510253906"/>
+      </node>
+      <node id="SWANN" label="SWANN">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0.017060845740281223"/>
+          <attvalue for="rawSize" value="22"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="22"/>
+        <viz:position x="297.8555908203125" y="-224.82720947265625"/>
+      </node>
+      <node id="MULLROY" label="MULLROY">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0.0076234417464256165"/>
+          <attvalue for="rawSize" value="20.5"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="20.5"/>
+        <viz:position x="434.42010498046875" y="-374.78436279296875"/>
+      </node>
+      <node id="MURTOGG" label="MURTOGG">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0.0076234417464256165"/>
+          <attvalue for="rawSize" value="20.5"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="20.5"/>
+        <viz:position x="366.830810546875" y="-395.6228332519531"/>
+      </node>
+      <node id="ANAMARIA" label="ANAMARIA">
+        <attvalues>
+          <attvalue for="modularityClass" value="1"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="16"/>
+        </attvalues>
+        <viz:color r="198" g="91" b="147"/>
+        <viz:size value="16"/>
+        <viz:position x="-482.0399169921875" y="-236.86703491210938"/>
+      </node>
+      <node id="PRISONER" label="PRISONER">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="14.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="14.5"/>
+        <viz:position x="-664.6226196289062" y="537.6361083984375"/>
+      </node>
+      <node id="GILLETTE" label="GILLETTE">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0.003091397849462365"/>
+          <attvalue for="rawSize" value="19"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="19"/>
+        <viz:position x="501.10919189453125" y="-274.4128112792969"/>
+      </node>
+      <node id="COTTON'S PARROT" label="COTTON'S PARROT">
+        <attvalues>
+          <attvalue for="modularityClass" value="1"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="16"/>
+        </attvalues>
+        <viz:color r="198" g="91" b="147"/>
+        <viz:size value="16"/>
+        <viz:position x="-537.4729614257812" y="-191.696044921875"/>
+      </node>
+      <node id="TWIGG" label="TWIGG">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0.024919502540470283"/>
+          <attvalue for="rawSize" value="25"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="25"/>
+        <viz:position x="-580.1048583984375" y="510.34515380859375"/>
+      </node>
+      <node id="MULLR0Y" label="MULLR0Y">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="13"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="13"/>
+        <viz:position x="425.3736267089844" y="-495.96697998046875"/>
+      </node>
+      <node id="KOEHLER" label="KOEHLER">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0.01735126432707078"/>
+          <attvalue for="rawSize" value="22"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="22"/>
+        <viz:position x="-628.0748901367188" y="609.4243774414062"/>
+      </node>
+      <node id="JACOBY" label="JACOBY">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="17.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="17.5"/>
+        <viz:position x="-545.99169921875" y="630.0069580078125"/>
+      </node>
+      <node id="BUTLER" label="BUTLER">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="11.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="11.5"/>
+        <viz:position x="363.30560302734375" y="38.43519973754883"/>
+      </node>
+      <node id="HARBORMASTER" label="HARBORMASTER">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="10"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="10"/>
+        <viz:position x="-9.937058448791504" y="-676.092529296875"/>
+      </node>
+      <node id="BROWN" label="BROWN">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="13"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="13"/>
+        <viz:position x="469.5223388671875" y="36.467384338378906"/>
+      </node>
+      <node id="ESTRELLA" label="ESTRELLA">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="10"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="10"/>
+        <viz:position x="200.4685516357422" y="684.4989013671875"/>
+      </node>
+      <node id="SMOLDERING PIRATE" label="SMOLDERING PIRATE">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="11.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="11.5"/>
+        <viz:position x="-172.94522094726562" y="702.1422729492188"/>
+      </node>
+      <node id="PRISIONER" label="PRISIONER">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="14.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="14.5"/>
+        <viz:position x="-706.9491577148438" y="571.6913452148438"/>
+      </node>
+      <node id="BOSUN" label="BOSUN">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="13"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="13"/>
+        <viz:position x="-279.6164855957031" y="668.740966796875"/>
+      </node>
+      <node id="SENTRY" label="SENTRY">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="11.5"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="11.5"/>
+        <viz:position x="610.6325073242188" y="-2.3014748096466064"/>
+      </node>
+      <node id="STEERSMAN" label="STEERSMAN">
+        <attvalues>
+          <attvalue for="modularityClass" value="0"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="13"/>
+        </attvalues>
+        <viz:color r="94" g="172" b="105"/>
+        <viz:size value="13"/>
+        <viz:position x="599.875244140625" y="-230.65895080566406"/>
+      </node>
+      <node id="DEADEYE" label="DEADEYE">
+        <attvalues>
+          <attvalue for="modularityClass" value="2"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="17.5"/>
+        </attvalues>
+        <viz:color r="128" g="119" b="203"/>
+        <viz:size value="17.5"/>
+        <viz:position x="-550.0758666992188" y="676.9918212890625"/>
+      </node>
+      <node id="SHORT SAILOR" label="SHORT SAILOR">
+        <attvalues>
+          <attvalue for="modularityClass" value="3"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="10"/>
+        </attvalues>
+        <viz:color r="174" g="152" b="65"/>
+        <viz:size value="10"/>
+        <viz:position x="37695.93359375" y="-23690.2265625"/>
+      </node>
+      <node id="TALL SAILOR" label="TALL SAILOR">
+        <attvalues>
+          <attvalue for="modularityClass" value="3"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="10"/>
+        </attvalues>
+        <viz:color r="174" g="152" b="65"/>
+        <viz:size value="10"/>
+        <viz:position x="37699.80859375" y="-23684.4609375"/>
+      </node>
+      <node id="BIG-BONES" label="BIG-BONES">
+        <attvalues>
+          <attvalue for="modularityClass" value="4"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="11.5"/>
+        </attvalues>
+        <viz:color r="202" g="93" b="65"/>
+        <viz:size value="11.5"/>
+        <viz:position x="14681.763671875" y="-43256.75390625"/>
+      </node>
+      <node id="BONED" label="BONED">
+        <attvalues>
+          <attvalue for="modularityClass" value="4"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="11.5"/>
+        </attvalues>
+        <viz:color r="202" g="93" b="65"/>
+        <viz:size value="11.5"/>
+        <viz:position x="14690.8505859375" y="-43265.72265625"/>
+      </node>
+      <node id="SKINNY" label="SKINNY">
+        <attvalues>
+          <attvalue for="modularityClass" value="4"/>
+          <attvalue for="betweennessCentrality" value="0"/>
+          <attvalue for="rawSize" value="11.5"/>
+        </attvalues>
+        <viz:color r="202" g="93" b="65"/>
+        <viz:size value="11.5"/>
+        <viz:position x="14678.544921875" y="-43269.109375"/>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="geid_197_0" source="JACK" target="WILL" weight="23">
+        <attvalues>
+          <attvalue for="rawWeight" value="23"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_1" source="JACK" target="ELIZABETH" weight="14">
+        <attvalues>
+          <attvalue for="rawWeight" value="14"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_2" source="JACK" target="NORRINGTON" weight="7">
+        <attvalues>
+          <attvalue for="rawWeight" value="7"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_3" source="JACK" target="GIBBS" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_4" source="JACK" target="BARBOSSA" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_5" source="JACK" target="ANAMARIA" weight="4">
+        <attvalues>
+          <attvalue for="rawWeight" value="4"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_6" source="JACK" target="PINTEL" weight="4">
+        <attvalues>
+          <attvalue for="rawWeight" value="4"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_7" source="JACK" target="MULLROY" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_8" source="JACK" target="MURTOGG" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_9" source="JACK" target="PRISONER" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_10" source="JACK" target="GILLETTE" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_11" source="JACK" target="MULLR0Y" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_12" source="JACK" target="TWIGG" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_13" source="JACK" target="COTTON'S PARROT" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_14" source="JACK" target="HARBORMASTER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_16" source="JACK" target="SWANN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_17" source="JACK" target="BROWN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_18" source="JACK" target="KOEHLER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_19" source="JACK" target="PRISIONER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_20" source="JACK" target="SENTRY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_21" source="JACK" target="STEERSMAN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_29" source="WILL" target="ELIZABETH" weight="8">
+        <attvalues>
+          <attvalue for="rawWeight" value="8"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_30" source="WILL" target="GIBBS" weight="7">
+        <attvalues>
+          <attvalue for="rawWeight" value="7"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_31" source="WILL" target="BARBOSSA" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_32" source="WILL" target="ANAMARIA" weight="4">
+        <attvalues>
+          <attvalue for="rawWeight" value="4"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_33" source="WILL" target="NORRINGTON" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_34" source="WILL" target="SWANN" weight="4">
+        <attvalues>
+          <attvalue for="rawWeight" value="4"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_35" source="WILL" target="PINTEL" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_36" source="WILL" target="MULLROY" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_37" source="WILL" target="MURTOGG" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_38" source="WILL" target="GILLETTE" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_39" source="WILL" target="COTTON'S PARROT" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_41" source="WILL" target="BROWN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_44" source="WILL" target="TWIGG" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_47" source="ELIZABETH" target="PINTEL" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_48" source="ELIZABETH" target="BARBOSSA" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_49" source="ELIZABETH" target="NORRINGTON" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_50" source="ELIZABETH" target="GIBBS" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_51" source="ELIZABETH" target="SWANN" weight="4">
+        <attvalues>
+          <attvalue for="rawWeight" value="4"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_53" source="ELIZABETH" target="TWIGG" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_55" source="ELIZABETH" target="BUTLER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_56" source="ELIZABETH" target="MULLROY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_57" source="ELIZABETH" target="MURTOGG" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_58" source="ELIZABETH" target="ESTRELLA" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_59" source="ELIZABETH" target="SMOLDERING PIRATE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_60" source="ELIZABETH" target="BOSUN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_61" source="ELIZABETH" target="DEADEYE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_62" source="ELIZABETH" target="JACOBY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_63" source="ELIZABETH" target="KOEHLER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_64" source="ELIZABETH" target="ANAMARIA" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_65" source="ELIZABETH" target="COTTON'S PARROT" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_69" source="BARBOSSA" target="PINTEL" weight="8">
+        <attvalues>
+          <attvalue for="rawWeight" value="8"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_70" source="BARBOSSA" target="TWIGG" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_72" source="BARBOSSA" target="JACOBY" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_73" source="BARBOSSA" target="KOEHLER" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_74" source="BARBOSSA" target="BOSUN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_76" source="BARBOSSA" target="DEADEYE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_77" source="BARBOSSA" target="GIBBS" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_81" source="PINTEL" target="TWIGG" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_82" source="PINTEL" target="SMOLDERING PIRATE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_83" source="PINTEL" target="BOSUN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_84" source="PINTEL" target="DEADEYE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_85" source="PINTEL" target="JACOBY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_86" source="PINTEL" target="KOEHLER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_87" source="PINTEL" target="GIBBS" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_88" source="GIBBS" target="ANAMARIA" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_89" source="GIBBS" target="COTTON'S PARROT" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_91" source="GIBBS" target="NORRINGTON" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_92" source="GIBBS" target="SWANN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_94" source="GIBBS" target="TWIGG" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_95" source="NORRINGTON" target="SWANN" weight="6">
+        <attvalues>
+          <attvalue for="rawWeight" value="6"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_96" source="NORRINGTON" target="GILLETTE" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_97" source="NORRINGTON" target="MULLROY" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_98" source="NORRINGTON" target="MURTOGG" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_100" source="NORRINGTON" target="BROWN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_101" source="NORRINGTON" target="SENTRY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_102" source="NORRINGTON" target="STEERSMAN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_105" source="SWANN" target="MULLROY" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_106" source="SWANN" target="MURTOGG" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_107" source="SWANN" target="BUTLER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_108" source="SWANN" target="GILLETTE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_109" source="MULLROY" target="MURTOGG" weight="4">
+        <attvalues>
+          <attvalue for="rawWeight" value="4"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_110" source="MULLROY" target="MULLR0Y" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_111" source="MULLROY" target="GILLETTE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_112" source="MURTOGG" target="MULLR0Y" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_113" source="MURTOGG" target="GILLETTE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_114" source="ANAMARIA" target="COTTON'S PARROT" weight="3">
+        <attvalues>
+          <attvalue for="rawWeight" value="3"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_116" source="PRISONER" target="KOEHLER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_117" source="PRISONER" target="PRISIONER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_118" source="PRISONER" target="TWIGG" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_120" source="GILLETTE" target="STEERSMAN" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_121" source="TWIGG" target="KOEHLER" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_122" source="TWIGG" target="JACOBY" weight="2">
+        <attvalues>
+          <attvalue for="rawWeight" value="2"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_123" source="TWIGG" target="PRISIONER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_124" source="TWIGG" target="DEADEYE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_127" source="KOEHLER" target="PRISIONER" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_128" source="KOEHLER" target="DEADEYE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_129" source="KOEHLER" target="JACOBY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_131" source="JACOBY" target="DEADEYE" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_134" source="SHORT SAILOR" target="TALL SAILOR" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_135" source="BIG-BONES" target="BONED" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_136" source="BIG-BONES" target="SKINNY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+      <edge id="geid_197_137" source="BONED" target="SKINNY" weight="1">
+        <attvalues>
+          <attvalue for="rawWeight" value="1"/>
+        </attvalues>
+        <viz:color r="204" g="204" b="204"/>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

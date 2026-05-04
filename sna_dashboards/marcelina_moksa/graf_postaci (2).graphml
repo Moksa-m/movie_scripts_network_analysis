@@ -1,0 +1,577 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d1" for="edge" attr.name="weight" attr.type="long"/>
+<key id="d0" for="node" attr.name="label" attr.type="string"/>
+<graph edgedefault="undirected"><node id="JACK">
+  <data key="d0">JACK</data>
+</node>
+<node id="WILL">
+  <data key="d0">WILL</data>
+</node>
+<node id="ELIZABETH">
+  <data key="d0">ELIZABETH</data>
+</node>
+<node id="BARBOSSA">
+  <data key="d0">BARBOSSA</data>
+</node>
+<node id="PINTEL">
+  <data key="d0">PINTEL</data>
+</node>
+<node id="GIBBS">
+  <data key="d0">GIBBS</data>
+</node>
+<node id="NORRINGTON">
+  <data key="d0">NORRINGTON</data>
+</node>
+<node id="SWANN">
+  <data key="d0">SWANN</data>
+</node>
+<node id="MULLROY">
+  <data key="d0">MULLROY</data>
+</node>
+<node id="MURTOGG">
+  <data key="d0">MURTOGG</data>
+</node>
+<node id="ANAMARIA">
+  <data key="d0">ANAMARIA</data>
+</node>
+<node id="PRISONER">
+  <data key="d0">PRISONER</data>
+</node>
+<node id="GILLETTE">
+  <data key="d0">GILLETTE</data>
+</node>
+<node id="COTTON'S PARROT">
+  <data key="d0">COTTON'S PARROT</data>
+</node>
+<node id="TWIGG">
+  <data key="d0">TWIGG</data>
+</node>
+<node id="MULLR0Y">
+  <data key="d0">MULLR0Y</data>
+</node>
+<node id="KOEHLER">
+  <data key="d0">KOEHLER</data>
+</node>
+<node id="NO!">
+  <data key="d0">NO!</data>
+</node>
+<node id="JACOBY">
+  <data key="d0">JACOBY</data>
+</node>
+<node id="EIGHT YEARS LATER">
+  <data key="d0">EIGHT YEARS LATER</data>
+</node>
+<node id="SWAN">
+  <data key="d0">SWAN</data>
+</node>
+<node id="BUTLER">
+  <data key="d0">BUTLER</data>
+</node>
+<node id="HARBORMASTER">
+  <data key="d0">HARBORMASTER</data>
+</node>
+<node id="NORRINGTON ELIZABETH!">
+  <data key="d0">NORRINGTON ELIZABETH!</data>
+</node>
+<node id="GLINTS -">
+  <data key="d0">GLINTS -</data>
+</node>
+<node id="BROWN">
+  <data key="d0">BROWN</data>
+</node>
+<node id="ESTRELLA">
+  <data key="d0">ESTRELLA</data>
+</node>
+<node id="SMOLDERING PIRATE">
+  <data key="d0">SMOLDERING PIRATE</data>
+</node>
+<node id="PRISIONER">
+  <data key="d0">PRISIONER</data>
+</node>
+<node id="BOSUN">
+  <data key="d0">BOSUN</data>
+</node>
+<node id="SENTRY">
+  <data key="d0">SENTRY</data>
+</node>
+<node id="STEERSMAN">
+  <data key="d0">STEERSMAN</data>
+</node>
+<node id="SKELETONS. .">
+  <data key="d0">SKELETONS. .</data>
+</node>
+<node id="SLAP!">
+  <data key="d0">SLAP!</data>
+</node>
+<node id="DEADEYE">
+  <data key="d0">DEADEYE</data>
+</node>
+<node id="JACK/ELIZABETH">
+  <data key="d0">JACK/ELIZABETH</data>
+</node>
+<node id="ELIZABETII">
+  <data key="d0">ELIZABETII</data>
+</node>
+<node id="LAND HO!">
+  <data key="d0">LAND HO!</data>
+</node>
+<node id="LOOKOUT">
+  <data key="d0">LOOKOUT</data>
+</node>
+<node id="SHORT SAILOR">
+  <data key="d0">SHORT SAILOR</data>
+</node>
+<node id="TALL SAILOR">
+  <data key="d0">TALL SAILOR</data>
+</node>
+<node id="BIG-BONES">
+  <data key="d0">BIG-BONES</data>
+</node>
+<node id="BONED">
+  <data key="d0">BONED</data>
+</node>
+<node id="SKINNY">
+  <data key="d0">SKINNY</data>
+</node>
+<node id="- - AND DRIVES THE SWORD INTO JACK'S CHEST.">
+  <data key="d0">- - AND DRIVES THE SWORD INTO JACK'S CHEST.</data>
+</node>
+<node id="A SHOT RINGS OUT -">
+  <data key="d0">A SHOT RINGS OUT -</data>
+</node>
+<edge source="JACK" target="WILL">
+  <data key="d1">23</data>
+</edge>
+<edge source="JACK" target="ELIZABETH">
+  <data key="d1">13</data>
+</edge>
+<edge source="JACK" target="NORRINGTON">
+  <data key="d1">7</data>
+</edge>
+<edge source="JACK" target="GIBBS">
+  <data key="d1">6</data>
+</edge>
+<edge source="JACK" target="BARBOSSA">
+  <data key="d1">6</data>
+</edge>
+<edge source="JACK" target="ANAMARIA">
+  <data key="d1">4</data>
+</edge>
+<edge source="JACK" target="PINTEL">
+  <data key="d1">4</data>
+</edge>
+<edge source="JACK" target="MULLROY">
+  <data key="d1">3</data>
+</edge>
+<edge source="JACK" target="MURTOGG">
+  <data key="d1">3</data>
+</edge>
+<edge source="JACK" target="PRISONER">
+  <data key="d1">3</data>
+</edge>
+<edge source="JACK" target="GILLETTE">
+  <data key="d1">3</data>
+</edge>
+<edge source="JACK" target="MULLR0Y">
+  <data key="d1">2</data>
+</edge>
+<edge source="JACK" target="TWIGG">
+  <data key="d1">2</data>
+</edge>
+<edge source="JACK" target="COTTON'S PARROT">
+  <data key="d1">2</data>
+</edge>
+<edge source="JACK" target="HARBORMASTER">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="GLINTS -">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="SWANN">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="BROWN">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="KOEHLER">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="PRISIONER">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="SENTRY">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="STEERSMAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="SLAP!">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="NO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="JACK/ELIZABETH">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="ELIZABETII">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="LAND HO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="LOOKOUT">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="- - AND DRIVES THE SWORD INTO JACK'S CHEST.">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACK" target="A SHOT RINGS OUT -">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="ELIZABETH">
+  <data key="d1">8</data>
+</edge>
+<edge source="WILL" target="GIBBS">
+  <data key="d1">7</data>
+</edge>
+<edge source="WILL" target="BARBOSSA">
+  <data key="d1">6</data>
+</edge>
+<edge source="WILL" target="ANAMARIA">
+  <data key="d1">4</data>
+</edge>
+<edge source="WILL" target="NORRINGTON">
+  <data key="d1">3</data>
+</edge>
+<edge source="WILL" target="SWANN">
+  <data key="d1">3</data>
+</edge>
+<edge source="WILL" target="PINTEL">
+  <data key="d1">3</data>
+</edge>
+<edge source="WILL" target="MULLROY">
+  <data key="d1">2</data>
+</edge>
+<edge source="WILL" target="MURTOGG">
+  <data key="d1">2</data>
+</edge>
+<edge source="WILL" target="GILLETTE">
+  <data key="d1">2</data>
+</edge>
+<edge source="WILL" target="COTTON'S PARROT">
+  <data key="d1">2</data>
+</edge>
+<edge source="WILL" target="EIGHT YEARS LATER">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="SWAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="BROWN">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="SLAP!">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="NO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="TWIGG">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="- - AND DRIVES THE SWORD INTO JACK'S CHEST.">
+  <data key="d1">1</data>
+</edge>
+<edge source="WILL" target="A SHOT RINGS OUT -">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="PINTEL">
+  <data key="d1">6</data>
+</edge>
+<edge source="ELIZABETH" target="BARBOSSA">
+  <data key="d1">6</data>
+</edge>
+<edge source="ELIZABETH" target="NORRINGTON">
+  <data key="d1">5</data>
+</edge>
+<edge source="ELIZABETH" target="GIBBS">
+  <data key="d1">3</data>
+</edge>
+<edge source="ELIZABETH" target="SWANN">
+  <data key="d1">3</data>
+</edge>
+<edge source="ELIZABETH" target="NO!">
+  <data key="d1">2</data>
+</edge>
+<edge source="ELIZABETH" target="TWIGG">
+  <data key="d1">2</data>
+</edge>
+<edge source="ELIZABETH" target="EIGHT YEARS LATER">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="SWAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="BUTLER">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="MULLROY">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="MURTOGG">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="ESTRELLA">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="SMOLDERING PIRATE">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="BOSUN">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="DEADEYE">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="JACOBY">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="KOEHLER">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="ANAMARIA">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="COTTON'S PARROT">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="JACK/ELIZABETH">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="ELIZABETII">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="LAND HO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="ELIZABETH" target="LOOKOUT">
+  <data key="d1">1</data>
+</edge>
+<edge source="BARBOSSA" target="PINTEL">
+  <data key="d1">8</data>
+</edge>
+<edge source="BARBOSSA" target="TWIGG">
+  <data key="d1">3</data>
+</edge>
+<edge source="BARBOSSA" target="NO!">
+  <data key="d1">2</data>
+</edge>
+<edge source="BARBOSSA" target="JACOBY">
+  <data key="d1">2</data>
+</edge>
+<edge source="BARBOSSA" target="KOEHLER">
+  <data key="d1">2</data>
+</edge>
+<edge source="BARBOSSA" target="BOSUN">
+  <data key="d1">1</data>
+</edge>
+<edge source="BARBOSSA" target="SKELETONS. .">
+  <data key="d1">1</data>
+</edge>
+<edge source="BARBOSSA" target="DEADEYE">
+  <data key="d1">1</data>
+</edge>
+<edge source="BARBOSSA" target="GIBBS">
+  <data key="d1">1</data>
+</edge>
+<edge source="BARBOSSA" target="- - AND DRIVES THE SWORD INTO JACK'S CHEST.">
+  <data key="d1">1</data>
+</edge>
+<edge source="BARBOSSA" target="A SHOT RINGS OUT -">
+  <data key="d1">1</data>
+</edge>
+<edge source="PINTEL" target="NO!">
+  <data key="d1">2</data>
+</edge>
+<edge source="PINTEL" target="TWIGG">
+  <data key="d1">2</data>
+</edge>
+<edge source="PINTEL" target="SMOLDERING PIRATE">
+  <data key="d1">1</data>
+</edge>
+<edge source="PINTEL" target="BOSUN">
+  <data key="d1">1</data>
+</edge>
+<edge source="PINTEL" target="DEADEYE">
+  <data key="d1">1</data>
+</edge>
+<edge source="PINTEL" target="JACOBY">
+  <data key="d1">1</data>
+</edge>
+<edge source="PINTEL" target="KOEHLER">
+  <data key="d1">1</data>
+</edge>
+<edge source="PINTEL" target="GIBBS">
+  <data key="d1">1</data>
+</edge>
+<edge source="GIBBS" target="ANAMARIA">
+  <data key="d1">3</data>
+</edge>
+<edge source="GIBBS" target="COTTON'S PARROT">
+  <data key="d1">2</data>
+</edge>
+<edge source="GIBBS" target="EIGHT YEARS LATER">
+  <data key="d1">1</data>
+</edge>
+<edge source="GIBBS" target="NORRINGTON">
+  <data key="d1">1</data>
+</edge>
+<edge source="GIBBS" target="SWAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="GIBBS" target="NO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="GIBBS" target="TWIGG">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="SWANN">
+  <data key="d1">5</data>
+</edge>
+<edge source="NORRINGTON" target="GILLETTE">
+  <data key="d1">3</data>
+</edge>
+<edge source="NORRINGTON" target="MULLROY">
+  <data key="d1">2</data>
+</edge>
+<edge source="NORRINGTON" target="MURTOGG">
+  <data key="d1">2</data>
+</edge>
+<edge source="NORRINGTON" target="EIGHT YEARS LATER">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="SWAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="BROWN">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="SENTRY">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="STEERSMAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="ELIZABETII">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="LAND HO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="NORRINGTON" target="LOOKOUT">
+  <data key="d1">1</data>
+</edge>
+<edge source="SWANN" target="MULLROY">
+  <data key="d1">2</data>
+</edge>
+<edge source="SWANN" target="MURTOGG">
+  <data key="d1">2</data>
+</edge>
+<edge source="SWANN" target="BUTLER">
+  <data key="d1">1</data>
+</edge>
+<edge source="SWANN" target="GILLETTE">
+  <data key="d1">1</data>
+</edge>
+<edge source="MULLROY" target="MURTOGG">
+  <data key="d1">4</data>
+</edge>
+<edge source="MULLROY" target="MULLR0Y">
+  <data key="d1">1</data>
+</edge>
+<edge source="MULLROY" target="GILLETTE">
+  <data key="d1">1</data>
+</edge>
+<edge source="MURTOGG" target="MULLR0Y">
+  <data key="d1">1</data>
+</edge>
+<edge source="MURTOGG" target="GILLETTE">
+  <data key="d1">1</data>
+</edge>
+<edge source="ANAMARIA" target="COTTON'S PARROT">
+  <data key="d1">3</data>
+</edge>
+<edge source="ANAMARIA" target="SLAP!">
+  <data key="d1">1</data>
+</edge>
+<edge source="PRISONER" target="KOEHLER">
+  <data key="d1">1</data>
+</edge>
+<edge source="PRISONER" target="PRISIONER">
+  <data key="d1">1</data>
+</edge>
+<edge source="PRISONER" target="TWIGG">
+  <data key="d1">1</data>
+</edge>
+<edge source="GILLETTE" target="NORRINGTON ELIZABETH!">
+  <data key="d1">1</data>
+</edge>
+<edge source="GILLETTE" target="STEERSMAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="TWIGG" target="KOEHLER">
+  <data key="d1">2</data>
+</edge>
+<edge source="TWIGG" target="JACOBY">
+  <data key="d1">2</data>
+</edge>
+<edge source="TWIGG" target="PRISIONER">
+  <data key="d1">1</data>
+</edge>
+<edge source="TWIGG" target="DEADEYE">
+  <data key="d1">1</data>
+</edge>
+<edge source="TWIGG" target="NO!">
+  <data key="d1">1</data>
+</edge>
+<edge source="MULLR0Y" target="GLINTS -">
+  <data key="d1">1</data>
+</edge>
+<edge source="KOEHLER" target="PRISIONER">
+  <data key="d1">1</data>
+</edge>
+<edge source="KOEHLER" target="DEADEYE">
+  <data key="d1">1</data>
+</edge>
+<edge source="KOEHLER" target="JACOBY">
+  <data key="d1">1</data>
+</edge>
+<edge source="NO!" target="BOSUN">
+  <data key="d1">1</data>
+</edge>
+<edge source="JACOBY" target="DEADEYE">
+  <data key="d1">1</data>
+</edge>
+<edge source="EIGHT YEARS LATER" target="SWAN">
+  <data key="d1">1</data>
+</edge>
+<edge source="LAND HO!" target="LOOKOUT">
+  <data key="d1">1</data>
+</edge>
+<edge source="SHORT SAILOR" target="TALL SAILOR">
+  <data key="d1">1</data>
+</edge>
+<edge source="BIG-BONES" target="BONED">
+  <data key="d1">1</data>
+</edge>
+<edge source="BIG-BONES" target="SKINNY">
+  <data key="d1">1</data>
+</edge>
+<edge source="BONED" target="SKINNY">
+  <data key="d1">1</data>
+</edge>
+<edge source="- - AND DRIVES THE SWORD INTO JACK'S CHEST." target="A SHOT RINGS OUT -">
+  <data key="d1">1</data>
+</edge>
+</graph></graphml>
