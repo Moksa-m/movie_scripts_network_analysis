@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pirates of the Caribbean — Analiza Sieci Postaci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+:root {
+  --bg-abyss:    #010608;
+  --bg-deep:     #040d14;
+  --bg-surface:  #071523;
+  --bg-panel:    #060f1c;
+  --panel-edge:  rgba(180,140,40,0.18);
+  --gold-hi:     #f0c94a;
+  --gold-mid:    #c9960e;
+  --gold-lo:     #7a5a08;
+  --gold-glow:   rgba(240,201,74,0.18);
+  --teal-hi:     #2dbdce;
+  --teal-lo:     #0a5060;
+  --red-cursed:  #c0321e;
+  --parchment:   #f0ddb0;
+  --text-warm:   #d4b87a;
+  --text-cool:   #8a9aaa;
+  --text-faint:  #3a4a58;
+  /* Community palettes */
+  --c0: #d4960e;   /* doubloon gold  — Port Royal */
+  --c1: #1aa8c4;   /* caribbean teal — Załoga Perły */
+  --c2: #b82a18;   /* cursed crimson — Piraci Barbossy */
+  --c3: #2e9e50;   /* mangrove green — Marynarze */
+  --c4: #9a6a30;   /* driftwood      — Peryferia */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg-abyss);
+  color: var(--parchment);
+  font-family: 'Crimson Pro', Georgia, serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Deep ocean animated gradient */
+body::before {
+  content:'';
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 85%, rgba(26,168,196,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 15%, rgba(201,150,14,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, rgba(4,13,20,0.4) 0%, var(--bg-abyss) 100%);
+  animation: seaDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes seaDrift {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(8deg); }
+}
+
+/* Fine grain texture */
+body::after {
+  content:'';
+  position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
+}
+
+.app {
+  position:relative; z-index:2;
+  max-width:1840px; margin:0 auto;
+}
+
+/* ─── HEADER ─────────────────────────────── */
+header {
+  padding: 28px 32px 22px;
+  border-bottom: 1px solid var(--panel-edge);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before, header::after {
+  position:absolute; top:50%; transform:translateY(-50%);
+  font-size:36px; opacity:.25; pointer-events:none;
+}
+header::before { content:'⚓'; left:36px; }
+header::after  { content:'☠'; right:36px; }
+
+.header-shimmer-bar {
+  position:absolute; top:0; left:-60%; width:50%; height:100%;
+  background: linear-gradient(90deg, transparent, rgba(240,201,74,0.06), transparent);
+  animation: shimmer 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes shimmer { 0%{left:-60%} 100%{left:110%} }
+
+.title-main {
+  font-family:'Cinzel Decorative', serif;
+  font-size: clamp(22px, 3.8vw, 48px);
+  font-weight:900;
+  background: linear-gradient(135deg, #8a6208 0%, #c9960e 25%, #f0c94a 45%, #e8b830 65%, #a07010 85%, #c9960e 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  letter-spacing:.06em; line-height:1.15;
+  filter: drop-shadow(0 2px 12px rgba(201,150,14,0.3));
+}
+
+.title-sub {
+  font-family:'Crimson Pro', serif;
+  font-style:italic;
+  font-size:clamp(12px, 1.4vw, 17px);
+  color: var(--text-warm);
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  margin-top:5px;
+  opacity:.85;
+}
+
+.title-divider {
+  display:flex; align-items:center; gap:14px;
+  margin:8px auto 0; width:fit-content;
+  color: var(--gold-lo); font-size:11px; letter-spacing:.25em;
+}
+.title-divider span { opacity:.6; }
+.title-divider::before,.title-divider::after {
+  content:''; display:block; height:1px; width:90px;
+  background: linear-gradient(90deg, transparent, var(--gold-lo), transparent);
+}
+
+/* ─── MAIN LAYOUT ───────────────────────── */
+.main-layout {
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  min-height:660px;
+  border-bottom: 1px solid var(--panel-edge);
+}
+
+/* ─── GRAPH PANEL ───────────────────────── */
+.graph-panel {
+  position:relative;
+  border-right: 1px solid var(--panel-edge);
+  display:flex; flex-direction:column;
+}
+
+.controls {
+  display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+  padding:10px 16px;
+  border-bottom:1px solid var(--panel-edge);
+  background: rgba(6,15,28,0.7);
+}
+
+.ctrl-label {
+  font-family:'Crimson Pro', serif;
+  font-size:11px; text-transform:uppercase;
+  letter-spacing:.22em; color:var(--text-faint);
+  margin-right:2px;
+}
+
+.mode-btn {
+  font-family:'Cinzel Decorative', serif;
+  font-size:10px; padding:4px 11px;
+  border:1px solid var(--gold-lo);
+  background:transparent; color:var(--text-cool);
+  cursor:pointer; border-radius:2px;
+  transition:all .2s; letter-spacing:.04em;
+}
+.mode-btn:hover { border-color:var(--gold-mid); color:var(--gold-hi); background:var(--gold-glow); }
+.mode-btn.active { border-color:var(--gold-hi); color:var(--gold-hi); background:rgba(240,201,74,0.12); }
+
+#graph-svg {
+  display:block; width:100%; height:596px;
+  cursor:grab; flex:1;
+}
+#graph-svg:active { cursor:grabbing; }
+
+/* Compass watermark */
+.compass-wrap {
+  position:absolute; pointer-events:none;
+  width:280px; height:280px;
+  top:50%; left:calc(50% - 170px);
+  transform:translate(-50%,-50%);
+  opacity:.045;
+  animation: compassSpin 120s linear infinite;
+}
+@keyframes compassSpin { to { transform:translate(-50%,-50%) rotate(360deg); } }
+
+/* ─── RIGHT PANEL ───────────────────────── */
+.right-panel {
+  background:var(--bg-panel);
+  display:flex; flex-direction:column;
+  overflow:hidden;
+}
+
+/* Node card */
+.node-card {
+  padding:14px 16px;
+  border-bottom:1px solid var(--panel-edge);
+  min-height:150px;
+}
+
+.panel-section-title {
+  font-family:'Cinzel Decorative', serif;
+  font-size:9.5px; color:var(--text-faint);
+  text-transform:uppercase; letter-spacing:.28em;
+  margin-bottom:10px;
+}
+
+.card-empty {
+  font-style:italic; font-size:13px;
+  color:var(--text-faint); text-align:center;
+  margin-top:24px; line-height:1.6;
+}
+
+.card-name {
+  font-family:'Cinzel Decorative', serif;
+  font-size:16px; font-weight:700;
+  color:var(--gold-hi); margin-bottom:4px;
+  text-shadow:0 0 18px rgba(240,201,74,0.3);
+}
+
+.card-community {
+  font-size:12px; font-style:italic;
+  margin-bottom:12px; padding-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.metrics-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.metric-cell {
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:3px; padding:6px 8px;
+}
+.metric-cell.highlight { border-color:rgba(240,201,74,0.3); background:rgba(240,201,74,0.05); }
+
+.metric-lbl {
+  font-size:9px; color:var(--text-faint);
+  text-transform:uppercase; letter-spacing:.18em;
+}
+.metric-val {
+  font-size:17px; font-weight:600;
+  color:var(--gold-mid); margin-top:1px;
+  font-variant-numeric:tabular-nums;
+}
+.metric-bar { width:100%; height:2px; background:rgba(255,255,255,0.08); margin-top:4px; border-radius:1px; overflow:hidden; }
+.metric-bar-fill { height:100%; background:var(--gold-mid); border-radius:1px; transition:width .5s ease; }
+
+/* Legend */
+.legend-section {
+  padding:12px 16px;
+  border-bottom:1px solid var(--panel-edge);
+}
+
+.legend-row {
+  display:flex; align-items:center; gap:8px;
+  margin-bottom:5px; cursor:pointer; transition:opacity .2s;
+  padding:2px 4px; border-radius:2px;
+}
+.legend-row:hover { background:rgba(255,255,255,0.03); }
+
+.legend-dot {
+  width:9px; height:9px; border-radius:50%; flex-shrink:0;
+  border:1.5px solid rgba(255,255,255,0.25);
+  box-shadow:0 0 5px currentColor;
+}
+
+.legend-name { font-size:12px; color:var(--text-cool); flex:1; }
+.legend-count { font-size:11px; color:var(--text-faint); }
+
+/* Ranking */
+.ranking-section {
+  flex:1; display:flex; flex-direction:column; overflow:hidden;
+}
+
+.rank-tabs {
+  display:flex;
+  border-bottom:1px solid var(--panel-edge);
+  background:rgba(6,10,18,0.5);
+}
+
+.rank-tab {
+  flex:1; padding:7px 3px;
+  font-family:'Cinzel Decorative', serif;
+  font-size:8.5px; text-transform:uppercase; letter-spacing:.08em;
+  text-align:center; cursor:pointer;
+  color:var(--text-faint); border-bottom:2px solid transparent;
+  transition:all .2s;
+}
+.rank-tab:hover { color:var(--text-warm); }
+.rank-tab.active { color:var(--gold-hi); border-bottom-color:var(--gold-hi); }
+
+.rank-list {
+  overflow-y:auto; flex:1;
+  padding:5px 0;
+}
+.rank-list::-webkit-scrollbar { width:3px; }
+.rank-list::-webkit-scrollbar-thumb { background:var(--gold-lo); border-radius:2px; }
+
+.rank-row {
+  display:flex; align-items:center; padding:4px 14px; gap:8px;
+  cursor:pointer; transition:background .15s;
+}
+.rank-row:hover { background:rgba(240,201,74,0.05); }
+
+.rank-num {
+  font-family:'Cinzel Decorative', serif;
+  font-size:10px; color:var(--text-faint); width:16px; flex-shrink:0;
+  text-align:right;
+}
+.rank-dot-sm { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.rank-name { flex:1; font-size:12.5px; color:var(--text-cool); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rank-val { font-size:11.5px; color:var(--gold-lo); font-variant-numeric:tabular-nums; }
+.rank-spark { width:36px; height:3px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; }
+.rank-spark-fill { height:100%; border-radius:2px; transition:width .4s; }
+
+/* ─── TOOLTIP ───────────────────────────── */
+#tooltip {
+  position:fixed; z-index:9999; pointer-events:none;
+  background:rgba(4,13,20,0.96);
+  border:1px solid rgba(201,150,14,0.5);
+  border-radius:4px; padding:10px 14px;
+  opacity:0; transition:opacity .12s;
+  box-shadow:0 4px 20px rgba(0,0,0,0.6), 0 0 15px rgba(201,150,14,0.1);
+  min-width:160px;
+}
+.tt-name {
+  font-family:'Cinzel Decorative', serif;
+  font-size:12.5px; color:var(--gold-hi); margin-bottom:7px;
+  padding-bottom:6px; border-bottom:1px solid rgba(201,150,14,0.25);
+}
+.tt-row { display:flex; justify-content:space-between; gap:16px; margin-bottom:3px; }
+.tt-lbl { font-size:11px; color:var(--text-faint); }
+.tt-val { font-size:11px; color:var(--gold-mid); font-weight:600; }
+
+/* ─── INTERPRETATION ────────────────────── */
+.interpretation {
+  padding:36px 48px 44px;
+  position:relative;
+}
+.interpretation::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold-lo), transparent);
+}
+
+.interp-title {
+  font-family:'Cinzel Decorative', serif;
+  font-size:clamp(13px, 1.8vw, 20px);
+  color:var(--gold-mid); text-align:center;
+  letter-spacing:.1em; margin-bottom:28px;
+  opacity:.9;
+}
+
+.interp-grid {
+  display:grid; grid-template-columns:repeat(3, 1fr);
+  gap:20px; max-width:1300px; margin:0 auto;
+}
+
+.interp-card {
+  background:rgba(7,18,33,0.7);
+  border:1px solid var(--panel-edge);
+  border-radius:3px; padding:18px 20px;
+  position:relative; overflow:hidden;
+}
+.interp-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--accent-color, var(--gold-lo));
+}
+
+.interp-card-title {
+  font-family:'Cinzel Decorative', serif;
+  font-size:11px; color:var(--gold-mid);
+  letter-spacing:.15em; margin-bottom:10px;
+}
+.interp-card p {
+  font-size:14px; line-height:1.75;
+  color: var(--text-cool);
+}
+.interp-card strong { color:var(--gold-hi); font-weight:600; }
+.interp-card em { font-style:italic; color:var(--text-warm); }
+
+/* ─── EDGE / NODE SVG STYLES ────────────── */
+.link { stroke-linecap:round; }
+.node circle { cursor:pointer; transition:stroke .2s, stroke-width .2s; }
+.node text { pointer-events:none; user-select:none; }
+
+/* Resize handle for graph  */
+@media (max-width: 900px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .right-panel { border-top:1px solid var(--panel-edge); max-height:360px; flex-direction:row; flex-wrap:wrap; }
+  .interp-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- Tooltip -->
+<div id="tooltip">
+  <div class="tt-name" id="tt-name"></div>
+  <div id="tt-rows"></div>
+</div>
+
+<!-- ═══ HEADER ═══════════════════════════ -->
+<header>
+  <div class="header-shimmer-bar"></div>
+  <h1 class="title-main">Pirates of the Caribbean</h1>
+  <p class="title-sub">The Curse of the Black Pearl &nbsp;·&nbsp; Analiza Sieci Postaci</p>
+  <div class="title-divider"><span>⚓</span> Social Network Analysis <span>⚓</span></div>
+</header>
+
+<!-- ═══ MAIN ══════════════════════════════ -->
+<div class="main-layout">
+
+  <!-- Graph panel -->
+  <div class="graph-panel" id="graph-panel">
+
+    <!-- Controls -->
+    <div class="controls">
+      <span class="ctrl-label">Rozmiar węzłów →</span>
+      <button class="mode-btn active" data-mode="degree">Stopień</button>
+      <button class="mode-btn" data-mode="weighted">Waga kraw.</button>
+      <button class="mode-btn" data-mode="betweenness">Pośrednictwo</button>
+      <button class="mode-btn" data-mode="closeness">Bliskość</button>
+      <button class="mode-btn" data-mode="pagerank">PageRank</button>
+    </div>
+
+    <!-- Compass rose watermark -->
+    <div class="compass-wrap">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="var(--gold-mid)">
+        <polygon points="100,4 106,88 100,82 94,88"/>
+        <polygon points="100,196 94,112 100,118 106,112"/>
+        <polygon points="4,100 88,106 82,100 88,94"/>
+        <polygon points="196,100 112,94 118,100 112,106"/>
+        <polygon points="100,14 104,72 100,68 96,72"/>
+        <polygon points="100,186 96,128 100,132 104,128"/>
+        <polygon points="14,100 72,96 68,100 72,104"/>
+        <polygon points="186,100 128,104 132,100 128,96"/>
+        <!-- ordinal arrows -->
+        <polygon points="29.3,29.3 73,81 68.5,76.5 81,73" opacity=".6"/>
+        <polygon points="170.7,29.3 119,81 123.5,76.5 127,73" opacity=".6"/>
+        <polygon points="29.3,170.7 81,119 76.5,123.5 73,127" opacity=".6"/>
+        <polygon points="170.7,170.7 119,127 123.5,123.5 127,119" opacity=".6"/>
+        <!-- circles -->
+        <circle cx="100" cy="100" r="20" fill="none" stroke="var(--gold-mid)" stroke-width="1"/>
+        <circle cx="100" cy="100" r="12" fill="none" stroke="var(--gold-mid)" stroke-width=".6"/>
+        <circle cx="100" cy="100" r="4" fill="var(--gold-mid)"/>
+        <!-- outer ring -->
+        <circle cx="100" cy="100" r="90" fill="none" stroke="var(--gold-mid)" stroke-width=".5" stroke-dasharray="4 6"/>
+        <circle cx="100" cy="100" r="96" fill="none" stroke="var(--gold-mid)" stroke-width=".3"/>
+      </svg>
+    </div>
+
+    <svg id="graph-svg"></svg>
+  </div>
+
+  <!-- Right panel -->
+  <div class="right-panel">
+
+    <!-- Node card -->
+    <div class="node-card">
+      <div class="panel-section-title">Karta Postaci</div>
+      <div id="node-card-inner">
+        <p class="card-empty">Kliknij węzeł,<br>aby zobaczyć szczegóły</p>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend-section">
+      <div class="panel-section-title">Społeczności (Louvain)</div>
+      <div id="legend"></div>
+    </div>
+
+    <!-- Ranking -->
+    <div class="ranking-section">
+      <div class="rank-tabs" id="rank-tabs"></div>
+      <div class="rank-list" id="rank-list"></div>
+    </div>
+
+  </div>
+</div><!-- .main-layout -->
+
+<!-- ═══ INTERPRETATION ════════════════════ -->
+<div class="interpretation">
+  <h2 class="interp-title">⚓ &nbsp; Interpretacja Struktury Sieci &nbsp; ⚓</h2>
+  <div class="interp-grid">
+
+    <div class="interp-card" style="--accent-color:var(--c0)">
+      <div class="interp-card-title">Pośrednicy i Mosty</div>
+      <p>
+        <strong>Jack Sparrow</strong> dominuje sieć jako kluczowy broker strukturalny
+        — jego <em>betweenness</em> wynosi <strong>0.246</strong>, co oznacza, że przez niego
+        biegnie ponad 24% wszystkich najkrótszych ścieżek. Blisko za nim plasuje się
+        <strong>Elizabeth Swann</strong> (0.199) — jej rola pomostowa między grupą Port Royal
+        a piratami Barbossy jest nieoceniona fabularnie i matematycznie.
+        Usunięcie tych dwóch węzłów rozbiłoby sieć na izolowane podgrupy.
+      </p>
+    </div>
+
+    <div class="interp-card" style="--accent-color:var(--c2)">
+      <div class="interp-card-title">Struktury Społeczności</div>
+      <p>
+        Algorytm Louvaina wykrył <strong>5 społeczności</strong>. Największa (klasa 2)
+        skupia <em>Piratów Barbossy</em> — Barbossę, Pintel, Twigg, Koehler, Jacoby i innych.
+        Klasa 0 łączy środowisko <em>Port Royal</em> z Norringtonem i Swannem.
+        Trzy izolowane triady (<em>Short/Tall Sailor</em>, <em>Big-Bones/Boned/Skinny</em>)
+        tworzą peryferyjne kliki całkowicie odcięte od rdzenia — epizodyczne postacie tła.
+      </p>
+    </div>
+
+    <div class="interp-card" style="--accent-color:var(--c1)">
+      <div class="interp-card-title">Intensywność Relacji</div>
+      <p>
+        Najsilniejsze wiązanie w całym grafie to <strong>Jack–Will</strong> (waga 23) —
+        współwystępują w niemal każdej scenie akcji. Para <strong>Barbossa–Pintel</strong> (8)
+        odzwierciedla ścisłą podległość załogi. Duet <strong>Mullroy–Murtogg</strong> (4)
+        to komediowy tandem wartowników. Niskie wagi (&lt;2) przy wielu krawędziach
+        sugerują liczne jednorazowe interakcje epizodyczne, typowe dla gatunku przygodowego.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ SCRIPT ════════════════════════════ -->
+<script>
+/* ─── DATA ──────────────────────────────── */
+const COMMUNITIES = {
+  0: { name:'Port Royal', color:'var(--c0)', hex:'#d4960e' },
+  1: { name:'Załoga Czarnej Perły', color:'var(--c1)', hex:'#1aa8c4' },
+  2: { name:'Piraci Barbossy', color:'var(--c2)', hex:'#b82a18' },
+  3: { name:'Samotni Marynarze', color:'var(--c3)', hex:'#2e9e50' },
+  4: { name:'Peryferyjni Piraci', color:'var(--c4)', hex:'#9a6a30' },
+};
+
+const rawNodes = [
+  {id:'JACK',            label:'JACK',            g:0, bc:0.2456, rs:40},
+  {id:'WILL',            label:'WILL',            g:1, bc:0.0379, rs:29.5},
+  {id:'ELIZABETH',       label:'ELIZABETH',       g:2, bc:0.1995, rs:37},
+  {id:'BARBOSSA',        label:'BARBOSSA',        g:2, bc:0.0169, rs:23.5},
+  {id:'PINTEL',          label:'PINTEL',          g:2, bc:0.0321, rs:25},
+  {id:'GIBBS',           label:'GIBBS',           g:1, bc:0.0081, rs:23.5},
+  {id:'NORRINGTON',      label:'NORRINGTON',      g:0, bc:0.0315, rs:25},
+  {id:'SWANN',           label:'SWANN',           g:0, bc:0.0171, rs:22},
+  {id:'MULLROY',         label:'MULLROY',         g:0, bc:0.0076, rs:20.5},
+  {id:'MURTOGG',         label:'MURTOGG',         g:0, bc:0.0076, rs:20.5},
+  {id:'ANAMARIA',        label:'ANAMARIA',        g:1, bc:0,      rs:16},
+  {id:'PRISONER',        label:'PRISONER',        g:2, bc:0,      rs:14.5},
+  {id:'GILLETTE',        label:'GILLETTE',        g:0, bc:0.0031, rs:19},
+  {id:'COTTONS_PARROT',  label:"COTTON'S PARROT", g:1, bc:0,      rs:16},
+  {id:'TWIGG',           label:'TWIGG',           g:2, bc:0.0249, rs:25},
+  {id:'MULLR0Y',         label:'MULLR0Y',         g:0, bc:0,      rs:13},
+  {id:'KOEHLER',         label:'KOEHLER',         g:2, bc:0.0174, rs:22},
+  {id:'JACOBY',          label:'JACOBY',          g:2, bc:0,      rs:17.5},
+  {id:'BUTLER',          label:'BUTLER',          g:2, bc:0,      rs:11.5},
+  {id:'HARBORMASTER',    label:'HARBORMASTER',    g:0, bc:0,      rs:10},
+  {id:'BROWN',           label:'BROWN',           g:0, bc:0,      rs:13},
+  {id:'ESTRELLA',        label:'ESTRELLA',        g:2, bc:0,      rs:10},
+  {id:'SMOLDERING_PIRATE',label:'SMOLDERING PIRATE',g:2,bc:0,    rs:11.5},
+  {id:'PRISIONER',       label:'PRISIONER',       g:2, bc:0,      rs:14.5},
+  {id:'BOSUN',           label:'BOSUN',           g:2, bc:0,      rs:13},
+  {id:'SENTRY',          label:'SENTRY',          g:0, bc:0,      rs:11.5},
+  {id:'STEERSMAN',       label:'STEERSMAN',       g:0, bc:0,      rs:13},
+  {id:'DEADEYE',         label:'DEADEYE',         g:2, bc:0,      rs:17.5},
+  {id:'SHORT_SAILOR',    label:'SHORT SAILOR',    g:3, bc:0,      rs:10},
+  {id:'TALL_SAILOR',     label:'TALL SAILOR',     g:3, bc:0,      rs:10},
+  {id:'BIG_BONES',       label:'BIG-BONES',       g:4, bc:0,      rs:11.5},
+  {id:'BONED',           label:'BONED',           g:4, bc:0,      rs:11.5},
+  {id:'SKINNY',          label:'SKINNY',          g:4, bc:0,      rs:11.5},
+];
+
+const rawLinks = [
+  {s:'JACK',t:'WILL',w:23},{s:'JACK',t:'ELIZABETH',w:14},{s:'JACK',t:'NORRINGTON',w:7},
+  {s:'JACK',t:'GIBBS',w:6},{s:'JACK',t:'BARBOSSA',w:6},{s:'JACK',t:'ANAMARIA',w:4},
+  {s:'JACK',t:'PINTEL',w:4},{s:'JACK',t:'MULLROY',w:3},{s:'JACK',t:'MURTOGG',w:3},
+  {s:'JACK',t:'PRISONER',w:3},{s:'JACK',t:'GILLETTE',w:3},{s:'JACK',t:'MULLR0Y',w:2},
+  {s:'JACK',t:'TWIGG',w:2},{s:'JACK',t:'COTTONS_PARROT',w:2},{s:'JACK',t:'HARBORMASTER',w:1},
+  {s:'JACK',t:'SWANN',w:1},{s:'JACK',t:'BROWN',w:1},{s:'JACK',t:'KOEHLER',w:1},
+  {s:'JACK',t:'PRISIONER',w:1},{s:'JACK',t:'SENTRY',w:1},{s:'JACK',t:'STEERSMAN',w:1},
+  {s:'WILL',t:'ELIZABETH',w:8},{s:'WILL',t:'GIBBS',w:7},{s:'WILL',t:'BARBOSSA',w:6},
+  {s:'WILL',t:'ANAMARIA',w:4},{s:'WILL',t:'SWANN',w:4},{s:'WILL',t:'NORRINGTON',w:3},
+  {s:'WILL',t:'PINTEL',w:3},{s:'WILL',t:'MULLROY',w:2},{s:'WILL',t:'MURTOGG',w:2},
+  {s:'WILL',t:'GILLETTE',w:2},{s:'WILL',t:'COTTONS_PARROT',w:2},{s:'WILL',t:'BROWN',w:1},
+  {s:'WILL',t:'TWIGG',w:1},
+  {s:'ELIZABETH',t:'PINTEL',w:6},{s:'ELIZABETH',t:'BARBOSSA',w:6},{s:'ELIZABETH',t:'NORRINGTON',w:6},
+  {s:'ELIZABETH',t:'GIBBS',w:3},{s:'ELIZABETH',t:'SWANN',w:4},{s:'ELIZABETH',t:'TWIGG',w:2},
+  {s:'ELIZABETH',t:'BUTLER',w:1},{s:'ELIZABETH',t:'MULLROY',w:1},{s:'ELIZABETH',t:'MURTOGG',w:1},
+  {s:'ELIZABETH',t:'ESTRELLA',w:1},{s:'ELIZABETH',t:'SMOLDERING_PIRATE',w:1},
+  {s:'ELIZABETH',t:'BOSUN',w:1},{s:'ELIZABETH',t:'DEADEYE',w:1},{s:'ELIZABETH',t:'JACOBY',w:1},
+  {s:'ELIZABETH',t:'KOEHLER',w:1},{s:'ELIZABETH',t:'ANAMARIA',w:1},{s:'ELIZABETH',t:'COTTONS_PARROT',w:1},
+  {s:'BARBOSSA',t:'PINTEL',w:8},{s:'BARBOSSA',t:'TWIGG',w:3},{s:'BARBOSSA',t:'JACOBY',w:2},
+  {s:'BARBOSSA',t:'KOEHLER',w:2},{s:'BARBOSSA',t:'BOSUN',w:1},{s:'BARBOSSA',t:'DEADEYE',w:1},
+  {s:'BARBOSSA',t:'GIBBS',w:1},
+  {s:'PINTEL',t:'TWIGG',w:2},{s:'PINTEL',t:'SMOLDERING_PIRATE',w:1},{s:'PINTEL',t:'BOSUN',w:1},
+  {s:'PINTEL',t:'DEADEYE',w:1},{s:'PINTEL',t:'JACOBY',w:1},{s:'PINTEL',t:'KOEHLER',w:1},
+  {s:'PINTEL',t:'GIBBS',w:1},
+  {s:'GIBBS',t:'ANAMARIA',w:3},{s:'GIBBS',t:'COTTONS_PARROT',w:2},{s:'GIBBS',t:'NORRINGTON',w:1},
+  {s:'GIBBS',t:'SWANN',w:1},{s:'GIBBS',t:'TWIGG',w:1},
+  {s:'NORRINGTON',t:'SWANN',w:6},{s:'NORRINGTON',t:'GILLETTE',w:3},{s:'NORRINGTON',t:'MULLROY',w:2},
+  {s:'NORRINGTON',t:'MURTOGG',w:2},{s:'NORRINGTON',t:'BROWN',w:1},{s:'NORRINGTON',t:'SENTRY',w:1},
+  {s:'NORRINGTON',t:'STEERSMAN',w:1},
+  {s:'SWANN',t:'MULLROY',w:2},{s:'SWANN',t:'MURTOGG',w:2},{s:'SWANN',t:'BUTLER',w:1},
+  {s:'SWANN',t:'GILLETTE',w:1},
+  {s:'MULLROY',t:'MURTOGG',w:4},{s:'MULLROY',t:'MULLR0Y',w:1},{s:'MULLROY',t:'GILLETTE',w:1},
+  {s:'MURTOGG',t:'MULLR0Y',w:1},{s:'MURTOGG',t:'GILLETTE',w:1},
+  {s:'ANAMARIA',t:'COTTONS_PARROT',w:3},
+  {s:'PRISONER',t:'KOEHLER',w:1},{s:'PRISONER',t:'PRISIONER',w:1},{s:'PRISONER',t:'TWIGG',w:1},
+  {s:'GILLETTE',t:'STEERSMAN',w:1},
+  {s:'TWIGG',t:'KOEHLER',w:2},{s:'TWIGG',t:'JACOBY',w:2},{s:'TWIGG',t:'PRISIONER',w:1},
+  {s:'TWIGG',t:'DEADEYE',w:1},
+  {s:'KOEHLER',t:'PRISIONER',w:1},{s:'KOEHLER',t:'DEADEYE',w:1},{s:'KOEHLER',t:'JACOBY',w:1},
+  {s:'JACOBY',t:'DEADEYE',w:1},
+  {s:'SHORT_SAILOR',t:'TALL_SAILOR',w:1},
+  {s:'BIG_BONES',t:'BONED',w:1},{s:'BIG_BONES',t:'SKINNY',w:1},{s:'BONED',t:'SKINNY',w:1},
+];
+
+/* ─── METRICS ───────────────────────────── */
+function computeMetrics(nodes, links) {
+  const idxMap = {};
+  nodes.forEach((n,i) => idxMap[n.id] = i);
+
+  const degree = {}, wDegree = {}, adj = {};
+  nodes.forEach(n => { degree[n.id]=0; wDegree[n.id]=0; adj[n.id]=[]; });
+  links.forEach(l => {
+    const s = typeof l.source==='object' ? l.source.id : (l.source||l.s);
+    const t = typeof l.target==='object' ? l.target.id : (l.target||l.t);
+    const w = l.weight ?? l.w ?? 1;
+    if(!adj[s]) adj[s]=[];
+    if(!adj[t]) adj[t]=[];
+    degree[s]++; degree[t]++;
+    wDegree[s]+=w; wDegree[t]+=w;
+    adj[s].push(t); adj[t].push(s);
+  });
+
+  // Closeness via BFS (unweighted)
+  function bfs(start) {
+    const d = {[start]:0}; const q = [start];
+    while(q.length){ const c=q.shift(); for(const nb of adj[c]||[]){ if(d[nb]===undefined){d[nb]=d[c]+1;q.push(nb);} } }
+    return d;
+  }
+  const closeness = {};
+  nodes.forEach(n => {
+    const d = bfs(n.id);
+    const reachable = Object.values(d).filter(v=>v>0);
+    closeness[n.id] = reachable.length ? reachable.length / reachable.reduce((a,b)=>a+b,0) : 0;
+  });
+
+  // PageRank (undirected, 60 iterations)
+  const N = nodes.length; const D = 0.85;
+  const pr = {}; nodes.forEach(n=>pr[n.id]=1/N);
+  for(let iter=0;iter<60;iter++){
+    const np = {}; nodes.forEach(n=>np[n.id]=(1-D)/N);
+    links.forEach(l => {
+      const _s = typeof l.source==='object'?l.source.id:(l.source||l.s);
+      const _t = typeof l.target==='object'?l.target.id:(l.target||l.t);
+      const _w = l.weight??l.w??1;
+      const ws = wDegree[_s]||1, wt = wDegree[_t]||1;
+      np[_t] = (np[_t]||0) + D*pr[_s]*(_w/ws);
+      np[_s] = (np[_s]||0) + D*pr[_t]*(_w/wt);
+    });
+    nodes.forEach(n=>pr[n.id]=np[n.id]);
+  }
+
+  return { degree, wDegree, closeness, pagerank:pr };
+}
+
+/* ─── NORMALIZE ─────────────────────────── */
+function normalise(obj) {
+  const vals = Object.values(obj);
+  const mn = Math.min(...vals), mx = Math.max(...vals);
+  const rng = mx-mn || 1;
+  const out = {};
+  for(const k in obj) out[k] = (obj[k]-mn)/rng;
+  return out;
+}
+
+/* ─── BUILD ──────────────────────────────── */
+const nodes = rawNodes.map(n=>({...n}));
+const links = rawLinks.map(l=>({source:l.s, target:l.t, weight:l.w}));
+
+const metrics = computeMetrics(nodes, links);
+const normMetrics = {
+  degree:      normalise(metrics.degree),
+  weighted:    normalise(metrics.wDegree),
+  betweenness: normalise(Object.fromEntries(nodes.map(n=>[n.id,n.bc]))),
+  closeness:   normalise(metrics.closeness),
+  pagerank:    normalise(metrics.pagerank),
+};
+
+nodes.forEach(n => {
+  n.degree     = metrics.degree[n.id];
+  n.wDegree    = metrics.wDegree[n.id];
+  n.closeness  = +metrics.closeness[n.id].toFixed(4);
+  n.pagerank   = +metrics.pagerank[n.id].toFixed(4);
+});
+
+/* ─── LEGEND ────────────────────────────── */
+const legendEl = document.getElementById('legend');
+// count per group
+const groupCount = {};
+nodes.forEach(n=>{ groupCount[n.g]=(groupCount[n.g]||0)+1; });
+Object.entries(COMMUNITIES).forEach(([gid,comm]) => {
+  const row = document.createElement('div');
+  row.className = 'legend-row';
+  row.innerHTML = `
+    <div class="legend-dot" style="background:${comm.hex};border-color:${comm.hex};box-shadow:0 0 5px ${comm.hex}80"></div>
+    <span class="legend-name">${comm.name}</span>
+    <span class="legend-count">${groupCount[gid]||0}</span>`;
+  legendEl.appendChild(row);
+});
+
+/* ─── RANKING TABS ──────────────────────── */
+const TABS = [
+  {key:'degree',     label:'Stopień'},
+  {key:'weighted',   label:'Waga'},
+  {key:'betweenness',label:'Pośred.'},
+  {key:'closeness',  label:'Bliskość'},
+  {key:'pagerank',   label:'PageRank'},
+];
+let activeTab = 'degree';
+
+const tabsEl = document.getElementById('rank-tabs');
+TABS.forEach(tab => {
+  const el = document.createElement('div');
+  el.className = 'rank-tab' + (tab.key==='degree'?' active':'');
+  el.textContent = tab.label;
+  el.dataset.key = tab.key;
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.rank-tab').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+    activeTab = tab.key;
+    renderRanking(tab.key);
+  });
+  tabsEl.appendChild(el);
+});
+
+function getMetricVal(node, key) {
+  if(key==='degree') return node.degree;
+  if(key==='weighted') return node.wDegree;
+  if(key==='betweenness') return node.bc;
+  if(key==='closeness') return node.closeness;
+  if(key==='pagerank') return node.pagerank;
+  return 0;
+}
+
+function renderRanking(key) {
+  const listEl = document.getElementById('rank-list');
+  const sorted = [...nodes].sort((a,b)=>getMetricVal(b,key)-getMetricVal(a,key));
+  const maxV = getMetricVal(sorted[0], key) || 1;
+  listEl.innerHTML = '';
+  sorted.forEach((n, i) => {
+    const v = getMetricVal(n, key);
+    const pct = (v/maxV*100).toFixed(0);
+    const comm = COMMUNITIES[n.g];
+    const row = document.createElement('div');
+    row.className = 'rank-row';
+    row.dataset.nodeId = n.id;
+    row.innerHTML = `
+      <span class="rank-num">${i+1}</span>
+      <div class="rank-dot-sm" style="background:${comm.hex}"></div>
+      <span class="rank-name">${n.label}</span>
+      <span class="rank-val">${v.toFixed(3)}</span>
+      <div class="rank-spark"><div class="rank-spark-fill" style="width:${pct}%;background:${comm.hex}80"></div></div>`;
+    row.addEventListener('click', ()=>focusNode(n.id));
+    listEl.appendChild(row);
+  });
+}
+renderRanking('degree');
+
+/* ─── D3 GRAPH ──────────────────────────── */
+let activeMode = 'degree';
+let selectedNodeId = null;
+
+const svgEl = document.getElementById('graph-svg');
+const W = svgEl.clientWidth || 900;
+const H = 596;
+
+const svg = d3.select('#graph-svg')
+  .attr('viewBox', `0 0 ${W} ${H}`)
+  .attr('preserveAspectRatio','xMidYMid meet');
+
+// defs: glow filter, arrowhead
+const defs = svg.append('defs');
+const filter = defs.append('filter').attr('id','glow').attr('x','-50%').attr('y','-50%').attr('width','200%').attr('height','200%');
+filter.append('feGaussianBlur').attr('stdDeviation','3').attr('result','blur');
+const merge = filter.append('feMerge');
+merge.append('feMergeNode').attr('in','blur');
+merge.append('feMergeNode').attr('in','SourceGraphic');
+
+// Radial vignette
+svg.append('radialGradient')
+  .attr('id','vignette')
+  .attr('cx','50%').attr('cy','50%')
+  .selectAll('stop')
+  .data([{o:'transparent',pct:'60%'},{o:'rgba(1,6,8,0.45)',pct:'100%'}])
+  .join('stop').attr('offset',d=>d.pct).attr('stop-color',d=>d.o);
+svg.append('rect').attr('width',W).attr('height',H).attr('fill','url(#vignette)').attr('pointer-events','none');
+
+const g = svg.append('g').attr('class','zoom-g');
+
+// zoom
+const zoom = d3.zoom().scaleExtent([0.25,4]).on('zoom', e=>{ g.attr('transform', e.transform); });
+svg.call(zoom).on('dblclick.zoom', null);
+svg.on('click', function(e){ if(e.target===svgEl) resetHighlight(); });
+
+// max weight for scale
+const maxW = Math.max(...links.map(l=>l.weight));
+
+function getRadius(n, mode) {
+  const minR=5, maxR=22;
+  const norm = normMetrics[mode][n.id] || 0;
+  return minR + norm*(maxR-minR);
+}
+
+// Simulation
+const simulation = d3.forceSimulation(nodes)
+  .force('link', d3.forceLink(links).id(d=>d.id).distance(d => 60 + 160/Math.sqrt(d.weight)).strength(d=>Math.min(1, d.weight/8)))
+  .force('charge', d3.forceManyBody().strength(-280).distanceMax(400))
+  .force('center', d3.forceCenter(W/2, H/2).strength(0.04))
+  .force('collision', d3.forceCollide(d=>getRadius(d,activeMode)+7).strength(0.8))
+  .alphaDecay(0.02)
+  .velocityDecay(0.35);
+
+// Links
+const linkSel = g.append('g').attr('class','links')
+  .selectAll('line')
+  .data(links)
+  .join('line')
+  .attr('class','link')
+  .attr('stroke','rgba(180,160,80,0.22)')
+  .attr('stroke-width', d => 0.4 + (d.weight/maxW)*3.6)
+  .attr('stroke-opacity', d => 0.15 + (d.weight/maxW)*0.55);
+
+// Nodes
+const nodeSel = g.append('g').attr('class','nodes')
+  .selectAll('g')
+  .data(nodes)
+  .join('g')
+  .attr('class','node')
+  .call(d3.drag()
+    .on('start', dragStart)
+    .on('drag',  dragged)
+    .on('end',   dragEnd));
+
+nodeSel.append('circle')
+  .attr('r', d=>getRadius(d, activeMode))
+  .attr('fill', d=>COMMUNITIES[d.g].hex+'cc')
+  .attr('stroke', d=>COMMUNITIES[d.g].hex)
+  .attr('stroke-width', 1.4)
+  .on('mouseover', showTooltip)
+  .on('mousemove', moveTooltip)
+  .on('mouseout',  hideTooltip)
+  .on('click', (e, d)=>{ e.stopPropagation(); selectNode(d); });
+
+nodeSel.append('text')
+  .attr('text-anchor','middle')
+  .attr('dy','0.35em')
+  .attr('font-family',"'Crimson Pro', serif")
+  .attr('font-size', d=>Math.max(8, getRadius(d,activeMode)*0.72))
+  .attr('fill', d=>COMMUNITIES[d.g].hex)
+  .attr('fill-opacity', 0.92)
+  .attr('stroke','rgba(1,6,8,0.7)')
+  .attr('stroke-width', 2.5)
+  .attr('paint-order','stroke')
+  .text(d=>d.label);
+
+// Tick
+simulation.on('tick', () => {
+  linkSel
+    .attr('x1', d=>d.source.x).attr('y1',d=>d.source.y)
+    .attr('x2', d=>d.target.x).attr('y2',d=>d.target.y);
+  nodeSel.attr('transform', d=>`translate(${d.x},${d.y})`);
+});
+
+/* ─── DRAG ──────────────────────────────── */
+function dragStart(e,d){ if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; }
+function dragged(e,d){ d.fx=e.x; d.fy=e.y; }
+function dragEnd(e,d){ if(!e.active) simulation.alphaTarget(0); d.fx=null; d.fy=null; }
+
+/* ─── NODE SELECTION ────────────────────── */
+const neighborSet = new Set();
+
+function getNeighborIds(nodeId) {
+  const s = new Set();
+  links.forEach(l => {
+    const src = typeof l.source==='object'?l.source.id:l.source;
+    const tgt = typeof l.target==='object'?l.target.id:l.target;
+    if(src===nodeId) s.add(tgt);
+    if(tgt===nodeId) s.add(src);
+  });
+  return s;
+}
+
+function selectNode(d) {
+  selectedNodeId = d.id;
+  const neighbors = getNeighborIds(d.id);
+
+  // dim/highlight nodes
+  nodeSel.selectAll('circle')
+    .attr('opacity', n => n.id===d.id || neighbors.has(n.id) ? 1 : 0.07)
+    .attr('stroke', n => {
+      if(n.id===d.id) return '#f0c94a';
+      if(neighbors.has(n.id)) return COMMUNITIES[n.g].hex;
+      return COMMUNITIES[n.g].hex;
+    })
+    .attr('stroke-width', n => n.id===d.id ? 3 : (neighbors.has(n.id)?2:1.4))
+    .attr('filter', n => n.id===d.id ? 'url(#glow)' : null);
+
+  nodeSel.selectAll('text')
+    .attr('fill-opacity', n => n.id===d.id || neighbors.has(n.id) ? 0.95 : 0.06)
+    .attr('font-size', n => {
+      const base = Math.max(8, getRadius(n, activeMode)*0.72);
+      return n.id===d.id ? base*1.3 : base;
+    });
+
+  // dim/highlight links
+  linkSel
+    .attr('stroke-opacity', l => {
+      const src = typeof l.source==='object'?l.source.id:l.source;
+      const tgt = typeof l.target==='object'?l.target.id:l.target;
+      if(src===d.id||tgt===d.id) return 0.7 + (l.weight/maxW)*0.3;
+      return 0.03;
+    })
+    .attr('stroke', l => {
+      const src = typeof l.source==='object'?l.source.id:l.source;
+      const tgt = typeof l.target==='object'?l.target.id:l.target;
+      return (src===d.id||tgt===d.id) ? '#d4960e' : 'rgba(180,160,80,0.15)';
+    });
+
+  updateNodeCard(d, neighbors);
+}
+
+function focusNode(nodeId) {
+  const nd = nodes.find(n=>n.id===nodeId);
+  if(nd) selectNode(nd);
+}
+
+function resetHighlight() {
+  selectedNodeId = null;
+  nodeSel.selectAll('circle')
+    .attr('opacity',1)
+    .attr('stroke', n=>COMMUNITIES[n.g].hex)
+    .attr('stroke-width',1.4)
+    .attr('filter',null);
+  nodeSel.selectAll('text')
+    .attr('fill-opacity',0.92)
+    .attr('font-size', n=>Math.max(8,getRadius(n,activeMode)*0.72));
+  linkSel
+    .attr('stroke-opacity', d=>0.15+(d.weight/maxW)*0.55)
+    .attr('stroke','rgba(180,160,80,0.22)');
+  document.getElementById('node-card-inner').innerHTML = '<p class="card-empty">Kliknij węzeł,<br>aby zobaczyć szczegóły</p>';
+}
+
+/* ─── NODE CARD ─────────────────────────── */
+function updateNodeCard(d, neighbors) {
+  const comm = COMMUNITIES[d.g];
+  const maxBC = Math.max(...nodes.map(n=>n.bc));
+  const maxCL = Math.max(...nodes.map(n=>n.closeness));
+  const maxPR = Math.max(...nodes.map(n=>n.pagerank));
+  const maxDeg = Math.max(...nodes.map(n=>n.degree));
+  const maxWD  = Math.max(...nodes.map(n=>n.wDegree));
+
+  document.getElementById('node-card-inner').innerHTML = `
+    <div class="card-name">${d.label}</div>
+    <div class="card-community" style="color:${comm.hex}cc">${comm.name} &nbsp;·&nbsp; ${neighbors.size} sąsiadów</div>
+    <div class="metrics-grid">
+      <div class="metric-cell">
+        <div class="metric-lbl">Stopień</div>
+        <div class="metric-val">${d.degree}</div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width:${(d.degree/maxDeg*100).toFixed(1)}%"></div></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-lbl">Suma wag</div>
+        <div class="metric-val">${d.wDegree}</div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width:${(d.wDegree/maxWD*100).toFixed(1)}%"></div></div>
+      </div>
+      <div class="metric-cell highlight">
+        <div class="metric-lbl">Pośrednictwo</div>
+        <div class="metric-val">${d.bc.toFixed(3)}</div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width:${(d.bc/maxBC*100).toFixed(1)}%"></div></div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-lbl">Bliskość</div>
+        <div class="metric-val">${d.closeness.toFixed(3)}</div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width:${(d.closeness/maxCL*100).toFixed(1)}%"></div></div>
+      </div>
+      <div class="metric-cell" style="grid-column:span 2">
+        <div class="metric-lbl">PageRank</div>
+        <div class="metric-val">${d.pagerank.toFixed(4)}</div>
+        <div class="metric-bar"><div class="metric-bar-fill" style="width:${(d.pagerank/maxPR*100).toFixed(1)}%;background:var(--teal-hi)"></div></div>
+      </div>
+    </div>`;
+}
+
+/* ─── TOOLTIP ────────────────────────────── */
+const tooltip = document.getElementById('tooltip');
+function showTooltip(e, d) {
+  document.getElementById('tt-name').textContent = d.label;
+  document.getElementById('tt-rows').innerHTML = `
+    <div class="tt-row"><span class="tt-lbl">Stopień</span><span class="tt-val">${d.degree}</span></div>
+    <div class="tt-row"><span class="tt-lbl">Pośrednictwo</span><span class="tt-val">${d.bc.toFixed(3)}</span></div>
+    <div class="tt-row"><span class="tt-lbl">PageRank</span><span class="tt-val">${d.pagerank.toFixed(4)}</span></div>`;
+  tooltip.style.opacity = '1';
+  moveTooltip(e);
+}
+function moveTooltip(e) {
+  const x = e.clientX + 14, y = e.clientY - 10;
+  tooltip.style.left = (x + 200 > window.innerWidth ? e.clientX - 220 : x) + 'px';
+  tooltip.style.top  = y + 'px';
+}
+function hideTooltip() { tooltip.style.opacity = '0'; }
+
+/* ─── MODE BUTTONS ──────────────────────── */
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMode = btn.dataset.mode;
+    updateNodeSizes();
+    renderRanking(activeMode);
+    if(document.querySelector('.rank-tab.active').dataset && document.querySelector('.rank-tab.active').dataset.key !== activeMode) {
+      // sync tab highlight
+    }
+  });
+});
+
+function updateNodeSizes() {
+  nodeSel.selectAll('circle')
+    .transition().duration(500).ease(d3.easeCubicOut)
+    .attr('r', d=>getRadius(d,activeMode));
+  nodeSel.selectAll('text')
+    .transition().duration(500).ease(d3.easeCubicOut)
+    .attr('font-size', d=>Math.max(8,getRadius(d,activeMode)*0.72));
+  simulation.force('collision', d3.forceCollide(d=>getRadius(d,activeMode)+7).strength(0.8));
+  simulation.alpha(0.3).restart();
+}
+
+// initial fit after simulation settles
+simulation.on('end', () => {
+  // auto-fit
+  const xs = nodes.map(n=>n.x), ys = nodes.map(n=>n.y);
+  const x0=Math.min(...xs)-30, x1=Math.max(...xs)+30, y0=Math.min(...ys)-30, y1=Math.max(...ys)+30;
+  const scale = Math.min(W/(x1-x0), H/(y1-y0), 1.8)*0.88;
+  const tx = (W - scale*(x0+x1))/2, ty = (H - scale*(y0+y1))/2;
+  svg.transition().duration(900).call(zoom.transform, d3.zoomIdentity.translate(tx,ty).scale(scale));
+});
+
+// initial center
+svg.call(zoom.transform, d3.zoomIdentity.translate(0,0).scale(1));
+</script>
+</body>
+</html>
